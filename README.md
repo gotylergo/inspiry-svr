@@ -1,5 +1,5 @@
 # inspiry-srv
-The backend to the inspiry app, a fun way to end writers block by free writing. Kill some time, get out of your head, and share your creations with friends and the world.
+The API backend to the inspiry app, a fun way to end writers block by free writing. Kill some time, get out of your head, and share your creations with friends and the world.
 
 <!-- [Live demo](https://inspiry-cl.herokuapp.com/)
 ![Screenshot](http://i66.tinypic.com/35k99i9.png)
