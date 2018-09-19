@@ -16,6 +16,14 @@ app.get('/api/*', (req, res) => {
   res.json({ok: true});
 });
 
+app.get('/', function(req, res) {
+  res.send('<h1>inspiry-svr</h1><p>/api/*</p>');
+})
+
+app.use(function(req, res, next) {
+  res.status(404).send("Oops, that route is invalid. Check for typos and try again.");
+});
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 module.exports = {app};
