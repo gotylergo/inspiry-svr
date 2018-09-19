@@ -1,0 +1,47 @@
+{
+  "name": "inspiry-srv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.1.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "faker": "^4.1.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.4",
+    "superagent": "^3.8.3",
+    "supertest": "^3.1.0"
+  },
+  "engines": {
+    "node": "9.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotylergo/inspiry-srv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gotylergo/inspiry-srv/issues"
+  },
+  "homepage": "https://github.com/gotylergo/inspiry-srv#readme"
+}
