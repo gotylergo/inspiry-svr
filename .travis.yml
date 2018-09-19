@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: hSz/7tLG/YCfW8PL2J9t2mZ3sOP68/XWTQLXmHs6vzVht86DkxYbowumcAZhhfYu+qsHuzwqu2DFCmUDnYcZ8S7eoDcrahdJT4LEAKzMAEVgfPkY9tKEerwcQG5Ry/Rl64FuwNY67DMHj85sVCzmY7GCDEDNoIgHXrsF6jaLwtRofzRdRahQx/FoF6q3WWjSoZPaRkBwjmFyW0IX9u22mghmq+LLon6MlgSM4gqKTh/qYnanrmypu69IAoTIWpukTxngkNLsX2lhqfNpbyD1ELxQafrROj15M+MGSblwWcBJpovldOfl8V1VQztk+eZN4wgMTwVKEUh2f/bEiFrgU9HA8BuBmUy9WyCodCT3F4t87ZlymEtnPvQklU6y/g2Qaag+hIdZWpVq5zd9qH/n2NhUakikJHHiPdrAK9qBBnGb4cVSZ18dPumXn0pWMwPqrChEqvuUrcXG9lA4rPP0XEcO15cus0jJqdqSVsxBHOzf4xkLj1Caq1oSp4ys+WaoBQrnBR/X9DsBSgL8/l27j9qWKOgzHwg1+5tv88p8l1edcCdaj5EAjDN28SA7iyrPcJGjFL63SNV/mLqleT2ihYZq4XaiX6VOCPPaSahfsAFEemvtspJuyHlqT5X/6XeL/n5cj4rTFSlsLNli9BCSUYwN6H0QbwpcuXgPM+cDiFU=
+  app: inspiry-svr
+  on:
+    repo: gotylergo/inspiry-svr
