@@ -4,7 +4,17 @@ const express = require('express');
 var cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const mongoose = require('mongoose');
+const passport = require('passport');
+
+const { router: usersRouter } = require('./users');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const { PORT, DATABASE_URL} = require('./config');
+
+mongoose.Promise = global.Promise;
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 app.use(
   cors({
@@ -12,18 +22,70 @@ app.use(
   })
 );
 
-app.get('/api/*', (req, res) => {
+app.use('/api/users/', usersRouter);
+app.use('/api/auth/', authRouter);
+
+app.use(express.static('public'));
+
+app.get('/api/', (req, res) => {
   res.json({ok: true});
 });
 
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
+// A protected endpoint which needs a valid JWT to access it
+
+app.get('/api/protected', jwtAuth, (req, res) => {
+  return res.json({
+    data: 'secret'
+  });
+});
+
 app.get('/', function(req, res) {
-  res.send('<h1>inspiry-svr</h1><p>/api/*</p>');
+  res.send('<h1>inspiry-svr</h1><p>/api/*</p><div><a href="https://github.com/gotylergo/inspiry-cl">view on github</a></div>');
 })
 
 app.use(function(req, res, next) {
   res.status(404).send("Oops, that route is invalid. Check for typos and try again.");
 });
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+let server;
 
-module.exports = {app};
+function runServer(databaseUrl, port = PORT) {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(databaseUrl, { useNewUrlParser: true }, err => {
+      if (err) {
+        return reject(err);
+      }
+      server = app
+        .listen(port, () => {
+          console.log(`App is listening on port ${port}`);
+          resolve();
+        })
+        .on('error', err => {
+          mongoose.disconnect();
+          reject(err);
+        });
+    });
+  });
+}
+
+function closeServer() {
+  return mongoose.disconnect().then(() => {
+    return new Promise((resolve, reject) => {
+      console.log('Closing server');
+      server.close(err => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
+      });
+    });
+  });
+}
+
+if (require.main === module) {
+  runServer(DATABASE_URL).catch(err => console.error(err));
+}
+
+module.exports = { app, runServer, closeServer };
