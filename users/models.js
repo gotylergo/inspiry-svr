@@ -1,10 +1,11 @@
 'use strict';
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
 
-const UserSchema = mongoose.Schema({
+const UserSchema = Schema({
   username: {
     type: String,
     required: true,

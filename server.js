@@ -5,10 +5,13 @@ var cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
 const app = express();
 const mongoose = require('mongoose');
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useCreateIndex', true);
 const passport = require('passport');
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const { storiesRouter } = require('./stories');
 const { PORT, DATABASE_URL} = require('./config');
 
 mongoose.Promise = global.Promise;
@@ -22,14 +25,11 @@ app.use(
   })
 );
 
+app.get('/api/', (req, res) => res.json({ok: true}));
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-
+app.use('/api/stories/', storiesRouter);
 app.use(express.static('public'));
-
-app.get('/api/', (req, res) => {
-  res.json({ok: true});
-});
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
@@ -51,9 +51,9 @@ app.use(function(req, res, next) {
 
 let server;
 
-function runServer(databaseUrl, port = PORT) {
+function runServer(databaseUrl = DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, { useNewUrlParser: true }, err => {
+    mongoose.connect(databaseUrl = DATABASE_URL, err => {
       if (err) {
         return reject(err);
       }
