@@ -1,8 +1,6 @@
 'use strict'
 require('dotenv').config();
 const express = require('express');
-var cors = require('cors');
-const { CLIENT_ORIGIN } = require('./config');
 const app = express();
 const mongoose = require('mongoose');
 mongoose.set('useNewUrlParser', true);
@@ -20,11 +18,11 @@ mongoose.Promise = global.Promise;
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use(
-  cors({
-    origin: CLIENT_ORIGIN
-  })
-);
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/api/', (req, res) => res.json({ ok: true }));
 app.use('/api/users/', usersRouter);
