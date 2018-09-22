@@ -1,5 +1,5 @@
 'use strict';
-const { Stories } = require('./models');
+const { Story } = require('./models');
 const { storiesRouter } = require('./router');
 
-module.exports = { Stories, storiesRouter };
+module.exports = { Story, storiesRouter };
