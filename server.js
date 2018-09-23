@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
@@ -18,11 +19,13 @@ mongoose.Promise = global.Promise;
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(cors({
+  'allowedHeaders': ['sessionId', 'Content-Type', 'authorization'],
+  'exposedHeaders': ['sessionId'],
+  'origin': '*',
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+}));
 
 app.get('/api/', (req, res) => res.json({ ok: true }));
 app.use('/api/users/', usersRouter);
