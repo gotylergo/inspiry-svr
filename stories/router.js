@@ -53,7 +53,10 @@ storiesRouter.put('/id/:id', [jsonParser, jwtAuth], (req, res) => {
 
 storiesRouter.delete('/id/:id', [jsonParser, jwtAuth], (req, res) => {
     return Story.deleteOne({ _id: req.params.id })
-        .then(story => res.status(204).send(`${req.params.id} deleted.`))
+        .then(story => res.status(204).json({
+            message: `${req.params.id} deleted.`,
+            id: `${req.params.id}`
+        }))
         .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 

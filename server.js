@@ -12,7 +12,7 @@ const passport = require('passport');
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 const { storiesRouter } = require('./stories');
-const { PORT, DATABASE_URL } = require('./config');
+const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require('./config');
 
 mongoose.Promise = global.Promise;
 
@@ -22,7 +22,7 @@ passport.use(jwtStrategy);
 app.use(cors({
   'allowedHeaders': ['sessionId', 'Content-Type', 'authorization'],
   'exposedHeaders': ['sessionId'],
-  'origin': '*',
+  'origin': CLIENT_ORIGIN,
   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
   'preflightContinue': false
 }));
