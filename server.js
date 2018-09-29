@@ -22,7 +22,7 @@ passport.use(jwtStrategy);
 app.use(cors({
   'allowedHeaders': ['sessionId', 'Content-Type', 'authorization'],
   'exposedHeaders': ['sessionId'],
-  'origin': CLIENT_ORIGIN,
+  'origin': [CLIENT_ORIGIN, 'http://localhost:3000'],
   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
   'preflightContinue': false
 }));
