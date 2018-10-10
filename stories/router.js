@@ -62,7 +62,7 @@ storiesRouter.delete('/id/:id', [jsonParser, jwtAuth], (req, res) => {
 
 // GET one story by id
 
-storiesRouter.get('/id/:id', [jsonParser, jwtAuth], (req, res) => {
+storiesRouter.get('/id/:id', (req, res) => {
     return Story.findOne({ _id: req.params.id })
         .then(story => {
             res.json(story);
