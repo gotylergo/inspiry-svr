@@ -133,24 +133,6 @@ describe('Destination Diary API', function () {
     });
   });
 
-  describe('Authenticated user PUT endpoint', function () {
-    it('should update a story for user on PUT', function () {
-      const updatedStory = generateStory();
-      Story.findOne()
-        .then(function (story) {
-          return chai.request(app)
-            .put(`/api/stories/id/${story._id}`)
-            .set('Authorization', `bearer ${testing_token}`)
-            .send(updatedStory)
-            .then(function (res) {
-              expect(res).to.have.status(200);
-              expect(res).to.be.a('object');
-            })
-        })
-        .catch(err => console.error(err));
-    });
-  })
-
   describe('Authenticated user DELETE endpoint', function () {
     it('should delete a story by ID', function () {
       Story.findOne()

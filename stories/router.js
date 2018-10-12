@@ -37,18 +37,6 @@ storiesRouter.post('/', [jsonParser, jwtAuth], (req, res) => {
         });
 });
 
-// UPDATE one story by id
-
-storiesRouter.put('/id/:id', [jsonParser, jwtAuth], (req, res) => {
-    return Story.findOneAndUpdate(req.params.id, req.body, { new: true })
-        .then(story => {
-            res.send(story);
-        })
-        .catch(err => {
-            res.status(500).send(err).json({ message: 'Internal server error' })
-        });
-});
-
 // DELETE one story by ID
 
 storiesRouter.delete('/id/:id', [jsonParser, jwtAuth], (req, res) => {
@@ -89,7 +77,5 @@ storiesRouter.get('/', (req, res) => {
         })
         .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
-
-
 
 module.exports = { storiesRouter };
