@@ -2,8 +2,7 @@
 The API backend to the inspiry app ([inspiry-cl](https://github.com/gotylergo/inspiry-cl)), a fun way to end writers block by free writing. Kill some time, get out of your head, and share your creations with friends and the world.
 
 [Live demo](https://inspiry-svr.herokuapp.com/)
-<!-- ![Screenshot]()
-![Screenshot]() -->
+
 
 ## Technologies
  - [Node.js](https://nodejs.org/) - JavaScript runtime built on Chrome's V8 JavaScript engine
@@ -14,4 +13,4 @@ The API backend to the inspiry app ([inspiry-cl](https://github.com/gotylergo/in
  - [Mocha](https://mochajs.org/) - feature-rich JavaScript test framework
 
 ## Who are you?
-I'm Tyler! Find me on Github: https://github.com/gotylergo
+I'm Tyler! Check out my portfolio: https://tylerjustyn.dev
