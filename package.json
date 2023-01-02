@@ -12,7 +12,7 @@
     "http": "0.0.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.8",
-    "passport": "^0.4.0",
+    "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
   },
