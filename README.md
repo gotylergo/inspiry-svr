@@ -1,7 +1,7 @@
 # inspiry-srv
 The API backend to the inspiry app ([inspiry-cl](https://github.com/gotylergo/inspiry-cl)), a fun way to end writers block by free writing. Kill some time, get out of your head, and share your creations with friends and the world.
 
-[Live demo](https://inspiry-svr.herokuapp.com/)
+[Live demo](https://inspiry-svr.globa.one)
 
 
 ## Technologies
