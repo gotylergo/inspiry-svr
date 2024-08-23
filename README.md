@@ -13,4 +13,4 @@ The API backend to the inspiry app ([inspiry-cl](https://github.com/gotylergo/in
  - [Mocha](https://mochajs.org/) - feature-rich JavaScript test framework
 
 ## Who are you?
-I'm Tyler! Check out my portfolio: https://tylerjustyn.dev
+I'm Tyler! Check out my portfolio: [https://tylerj.dev](https://tylerj.dev)
